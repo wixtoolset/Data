@@ -373,6 +373,16 @@ namespace WixToolset.Data
             return Message(null, Ids.DuplicateVariableDefinition, "The variable '{0}' with value '{1}' was previously declared with value '{2}'.", variableName, variableValue, variableCollidingValue);
         }
 
+        public static Message DuplicateCacheIds1(SourceLineNumber originalLineNumber, string cacheId)
+        {
+            return Message(originalLineNumber, Ids.DuplicateCacheIds1, "The cache id '{0}' has been duplicated as indicated in the following message.", cacheId);
+        }
+
+        public static Message DuplicateCacheIds2(SourceLineNumber duplicateLineNumber, string cacheId)
+        {
+            return Message(duplicateLineNumber, Ids.DuplicateCacheIds2, "Each cache id must be unique. '{0}' has been used before as indicated in the previous message.", cacheId);
+        }
+
         public static Message ExampleGuid(SourceLineNumber sourceLineNumbers, string elementName, string attributeName, string value)
         {
             return Message(sourceLineNumbers, Ids.ExampleGuid, "The {0}/@{1} attribute's value, '{2}', is not a legal Guid value.  A Guid needs to be generated and put in place of '{2}' in the source file.", elementName, attributeName, value);
@@ -2726,6 +2736,8 @@ namespace WixToolset.Data
             MultiplePackagePayloads3 = 406,
             MissingPackagePayload = 407,
             ExpectedAttributeWithoutOtherAttributes = 408,
+            DuplicateCacheIds1 = 409,
+            DuplicateCacheIds2 = 410,
         }
     }
 }
